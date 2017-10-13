@@ -1479,7 +1479,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     // { path: '', component: AppComponent },
-    { path: '', redirectTo: '/islamabad', pathMatch: 'full' },
+    { path: '', redirectTo: '/punjab', pathMatch: 'full' },
     { path: 'punjab', component: __WEBPACK_IMPORTED_MODULE_2__components_vehicle_vehicle_component__["a" /* VehicleComponent */] },
     { path: 'islamabad', component: __WEBPACK_IMPORTED_MODULE_3__components_islam_vehicle_islam_vehicle_component__["a" /* IslamVehicleComponent */] },
     { path: 'kpk', component: __WEBPACK_IMPORTED_MODULE_4__components_kpk_vehicle_kpk_vehicle_component__["a" /* KpkVehicleComponent */] },
