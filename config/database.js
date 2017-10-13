@@ -1,4 +1,4 @@
 module.exports = {
-	database: 'mongodb://localhost:27017/vehicleVerification',
+	database: 'mongodb://user:user@ds119675.mlab.com:19675/vehicleverification',
 	secret: 'myownvehilces' 
 }
