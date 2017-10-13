@@ -1,0 +1,109 @@
+<!-- <ng-progress></ng-progress> -->
+<div class="container padding-top">
+	<div class="form-wrapper col-md-6">
+		<h2>Punjab Vehicle Verificatoin</h2>
+		<div class="ent-info-div">
+	        You can try Different Combinations e.g;<br>
+	        ABC 000 ..................................LXZ 123<br>
+	        ABC 0000 ................................LXZ 0123<br>
+	        ABC 0000 ................................LXZ 1111<br>
+	        ABC-00-0000 ..........................RIA-07-1111
+	    </div>
+		<div class="search-form">
+			<form #vehicleForm="ngForm" >
+				<div class="form-group">
+					<label for="vehicle">Vehicle Number:</label>
+					<input type="text" [(ngModel)]="vehicleNumber" class="form-control" name="vehicleNumber" id="vehicle" placeholder="Enter vehicle number">
+					<input (click)="onSubmit(); vehicleForm.reset()"  type="button" class="search-btn btn btn-primary" value="Search" /> 
+				</div>
+			</form>
+			<div *ngIf="alertTrue" class="alert alert-danger alert-dismissable fade in">
+				<a (click)="alertTrue = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				 Please insert format one of above
+			</div>
+			<div *ngIf="alertRecord" class="alert alert-info alert-dismissable fade in">
+				<a (click)="alertRecord = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Record not found, please insert a valid vehicle number
+			</div>
+		</div>
+
+		<div style="display: none;"  [innerHTML]="vehicleData"> </div>
+		<div class="new-table" *ngIf="isTrue" >
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Detail</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let obj of vehicleArr">	
+					<tr *ngFor="let key of obj | vehiclePipe ">
+						<td *ngIf="key!='_id'"> {{key}} </td>
+						<td *ngIf="key!=='_id'" [class.token-paid]='checkDate && key == "Token Tax Paid upto:"'
+						[class.token-unpaid]='!checkDate && key == "Token Tax Paid upto:"'
+						>
+						<span *ngIf="key=='Color:'" class="{{colorClass}} color-span" > </span> 
+						{{obj[key]}} 	
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button *ngIf="authService.loggedIn()"  (click)="saveData(vehicleArr[0])" class="btn btn-primary" >Save</button>
+			<button (click)="isTrue = false" class="btn btn-primary" >Close</button>
+			
+
+			<div *ngIf="!authService.loggedIn()" class="alert alert-info alert-dismissable fade in alertSave">
+				<a (click)="alertSave = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				For save your vehicle please Register
+			</div>
+
+
+			<div *ngIf="alertSave" class="alert alert-success alert-dismissable fade in alertSave">
+				<a (click)="alertSave = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Your record has been saved successfully
+			</div>
+			<div *ngIf="alertExistSave" class="alert alert-info alert-dismissable fade in alertSave">
+				<a (click)="alertExistSave = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Record is already saved in database
+			</div>
+		</div>
+	</div>
+
+	<div class="local-storage-data col-md-6">
+		<div class="recent-searches-wrapper">
+			<div *ngIf="searches" class="recent-searches">
+				<h2 class="h2-searches">Recent Searches</h2>
+				<ul class="ol-searches">
+					<li class="li-searches" *ngFor="let lastSearch of lastSearches | reverse; let i=index " (click)="onSearch(lastSearch)" >
+					<span class="list-index">{{i+1}}</span>
+					<span class="list-data">
+						{{lastSearch['Make Name:'] | capitalize}}   {{lastSearch['Registration Number:'] | capitalize}}	
+					</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		
+
+		<div class="recent-save-wrapper">
+			<div *ngIf="authService.loggedIn()">
+				<div *ngIf="storeData" class="recent-save">
+					<h2 class="h2-save">Recent Saved</h2>
+					<ul class="ol-save">
+						<li class="li-save" *ngFor="let save of vehicleFrDb; let i = index" (click)="onSearch(save)"> <span class="list-index">{{i+1}}</span> <span class="list-data"> {{save['Make Name:'] | capitalize}}   {{save['Registration Number:'] | capitalize}} </span>  <button class="delete-save" (click)="deleteSave(save._id); $event.stopPropagation()">x</button> </li>
+					</ul>
+				</div>
+				<div *ngIf="alertDelete" class="alert alert-info alert-dismissable fade in alertDelete">
+					<a (click)="alertDelete = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Your record has been deleted successfully
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+
+
+
+	<div class="clear"></div>
+</div>		

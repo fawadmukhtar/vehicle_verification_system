@@ -1,0 +1,55 @@
+/*ul.punjab-vehicle {
+    list-style: none;
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    display: inline-block;
+
+}
+
+ul.punjab-vehicle li {
+    float: left;
+}
+
+ul.punjab-vehicle li:not(:last-child) {
+    border-right: 1px solid #a9a0a0;
+}
+
+a {
+    padding: 6px 18px;
+    display: inline-block;
+}
+
+li:hover {
+    background-color: #eee;
+    transition: linear all 0.25s;
+}
+
+li:hover a{
+	text-decoration: none;
+}
+
+a.active  {
+	text-decoration: none;
+	background-color: #eee;	
+}
+*/
+
+ul.float-right{
+    float: right;
+}
+
+div.margin-top {
+    padding-top: 80px;
+}
+
+nav.menu-top {
+    /*margin-top: 15px;*/
+    background-color: #203d5d;
+}
+
+a {
+    color: #d6cccc;
+}
+

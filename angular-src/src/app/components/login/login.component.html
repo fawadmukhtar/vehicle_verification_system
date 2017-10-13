@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="login-user">
+    <form class="form-horizontal" (ngSubmit)="onSubmit(); formSubmit.reset();"	#formSubmit="ngForm">
+	    
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="userName">User Name:</label>
+	      <div class="col-sm-10">
+	        <input type="text" class="form-control" name="userName" [(ngModel)]="userName" id="userName" placeholder="Enter Username">
+	      </div>
+	    </div>
+
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="password">Password:</label>
+	      <div class="col-sm-10">
+	        <input type="password" class="form-control" name="password" [(ngModel)]="password"  id="password" placeholder="Enter Password">
+	      </div>
+	    </div>
+
+	    
+	    <div class="form-group"> 
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-primary">Login</button>
+	      </div>
+	    </div>
+	</form>
+  </div>  
+</div>

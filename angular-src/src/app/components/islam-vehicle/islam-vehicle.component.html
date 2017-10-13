@@ -1,0 +1,97 @@
+
+<div class="container padding-top">
+	<div class="form-wrapper col-md-6">
+		<h2>Islamabad Vehicle Verificatoin</h2>
+		<div class="ent-info-div">
+	        You can try Different Combinations e.g;<br>
+	       	In first (i.e, IDM, NK, SL etc.) <strong>WhiteSpace</strong> in last (i.e, 9921, 700, 231,652)	
+	    </div>
+		<div class="search-form">
+			<form  (ngSubmit)="onSubmit(); vehicleForm.reset()"   #vehicleForm="ngForm" >
+				<div class="form-group">
+					<label for="vehicle">Vehicle Number:</label>
+					<input type="text" [(ngModel)]="vehicleNumber" class="form-control" name="vehicleNumber" id="vehicle" placeholder="Enter vehicle number">
+					<button type="submit" class="search-btn btn btn-primary">Search</button> 
+				</div>
+			</form>
+			<div *ngIf="alertTrue" class="alert alert-danger alert-dismissable fade in">
+				<a (click)="alertTrue = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				 Please insert format one of above
+			</div>
+			<div *ngIf="alertRecord" class="alert alert-info alert-dismissable fade in">
+				<a (click)="alertRecord = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Record not found, please insert a valid vehicle number or contact with islamabad
+				excise department
+			</div>
+		</div>
+		<div style="display: none;"  [innerHTML]="vehicleData"> </div>
+		<div class="new-table" *ngIf="isTrue" >
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Detail</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let obj of vehicleArr">	
+					<tr *ngFor="let key of obj | vehiclePipe; let i=index ">
+						<td *ngIf="i != 10"> {{key}}: </td>
+						<td *ngIf="i != 10" [class.token-paid]='checkDate && key == "TOKEN PAID UPTO"'
+						[class.token-unpaid]='!checkDate && key == "TOKEN PAID UPTO"'
+						>
+						{{obj[key]}} 	
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button  (click)="saveData(true, vehicleArr[0])" class="btn btn-primary" >Save</button>
+			<button (click)="isTrue = false" class="btn btn-primary" >Close</button>
+			<div *ngIf="alertSave" class="alert alert-info alert-dismissable fade in alertSave">
+				<a (click)="alertSave = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Your record has been saved successfully
+			</div>
+			<div *ngIf="alertExistSave" class="alert alert-info alert-dismissable fade in alertSave">
+				<a (click)="alertExistSave = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Record is already saved, see in recent saved
+			</div>
+		</div>
+	</div>
+
+	<div class="local-storage-data col-md-6">
+		<div class="recent-searches-wrapper">
+			<div *ngIf="searches" class="recent-searches">
+				<h2 class="h2-searches">Recent Searches</h2>
+				<ul class="ol-searches">
+					<li class="li-searches" *ngFor="let lastSearch of lastSearches | reverse; let i = index" (click)="onSearch(lastSearch)" >
+						<span class="list-index">{{i+1}}</span>
+						<span class="list-data">
+							{{lastSearch['MAKER / MAKE'] | capitalize}}
+							{{lastSearch['REGISTRATION                         NO'] | capitalize}}
+						</span>	
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="recent-save-wrapper">
+			<div *ngIf="storeData" class="recent-save">
+				<h2 class="h2-save">Recent Saved</h2>
+				<ul class="ol-save">
+					<li class="li-save" *ngFor="let save of lastSave; let i = index" (click)="onSearch(save)"> 
+						<span class="list-index">{{i+1}}</span>
+						<span class="list-data"> {{save['MAKER / MAKE'] | capitalize}}   {{save['REGISTRATION                         NO'] | capitalize}} </span>  <button class="delete-save" (click)="deleteSave(save); $event.stopPropagation()">x</button> 
+					</li>
+				</ul>
+			</div>
+			<div *ngIf="alertDelete" class="alert alert-info alert-dismissable fade in alertDelete">
+				<a (click)="alertDelete = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Your record has been deleted successfully
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="clear"></div>
+
+</div>

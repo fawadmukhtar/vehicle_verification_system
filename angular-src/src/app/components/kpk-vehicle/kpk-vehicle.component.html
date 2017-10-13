@@ -1,0 +1,131 @@
+
+<div class="container padding-top">
+	<div class="form-wrapper col-md-6">
+		<h2>KPK Vehicle Verificatoin</h2>
+		<div class="ent-info-div">
+	        You can try Different Combinations e.g;<br>
+	       	In first (i.e, A, BB, SL etc.) <strong>WhiteSpace</strong> in last (i.e, 9921, 700)	
+	    </div>
+		<div class="search-form">
+			<form  (ngSubmit)="onSubmit(); vehicleForm.reset()"   #vehicleForm="ngForm" >
+				<div class="form-group">
+					<label for="vehicle">Vehicle Number:</label>
+					<input type="text" [(ngModel)]="vehicleNumber" class="form-control" name="vehicleNumber" id="vehicle" placeholder="Enter vehicle number">
+					 
+				</div>
+				<div class="form-group">
+					<label for="vehicleDistrict">Select District:</label>
+					<select  [(ngModel)]="vehicleDistrict" name="selectList" class="form-control" id="vehicleDistrict">
+						<option selected="selected" value="">-- Select District --</option>
+			            <option value="abbotabad">Abbottabad</option>
+			            <option value="bannu">Bannu</option>
+			            <option value="battagram">Battagram</option>
+			            <option value="buner">Buner</option>
+			            <option value="charsada">Charsadda</option>
+			            <option value="chitral">Chitral</option>
+			            <option value="dikhan">Dera Ismail Khan</option>
+			            <option value="hangu">Hangu</option>
+			            <option value="haripur">Haripur</option>
+			            <option value="karak">Karak</option>
+			            <option value="kohat">Kohat</option>
+			            <option value="kohistan">Kohistan</option>
+			            <option value="lmarwat">Lakki Marwat</option>
+			            <option value="lower_dir">Lower Dir (PATA)</option>
+			            <option value="malakand">Malakand (PATA)</option>
+			            <option value="mansehra">Mansehra</option>
+			            <option value="mardan">Mardan</option>
+			            <option value="nowshera">Nowshera</option>
+			            <option value="peshawar">Peshawar</option>
+			            <option value="shangla">Shangla</option>
+			            <option value="swabi">Swabi</option>
+			            <option value="swat">Swat </option>
+			            <option value="tank">Tank</option>
+			            <option value="torghar">Tor Ghar</option>
+			            <option value="uper_dir">Upper Dir</option>	
+					</select>
+				</div>
+
+				<button type="submit" class="search-btn btn btn-primary">Search</button>
+			</form>
+			<div *ngIf="alertTrue" class="alert alert-danger alert-dismissable fade in">
+				<a (click)="alertTrue = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				 Please insert format one of above
+			</div>
+			<div *ngIf="alertRecord" class="alert alert-info alert-dismissable fade in">
+				<a (click)="alertRecord = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Record not found, please insert a valid vehicle number or contact with Kpk
+				excise department
+			</div>
+	</div>
+		<div class="display-none-html" [hidden]="true"  [innerHTML]="vehicleData"> </div>
+		<div class="new-table" *ngIf="isTrue" >
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Detail</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let obj of vehicleArr">	
+					<tr *ngFor="let key of obj | vehiclePipe ">
+						<td class="object-property"> {{key}}: </td>
+						<td> 
+						<span *ngIf="key=='Color'" class="{{colorClass}} color-span" > </span>
+							{{obj[key]}}
+					 	</td>
+					</tr>
+				</tbody>
+			</table>
+			<button  (click)="saveData(true, vehicleArr[0])" class="btn btn-primary" >Save</button>
+			<button (click)="isTrue = false" class="btn btn-primary" >Close</button>
+			<div *ngIf="alertSave" class="alert alert-info alert-dismissable fade in alertSave">
+				<a (click)="alertSave = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Your record has been saved successfully
+			</div>
+			<div *ngIf="alertExistSave" class="alert alert-info alert-dismissable fade in alertSave">
+				<a (click)="alertExistSave = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Record is already saved, see in recent saved
+			</div>
+		</div>
+	</div>
+
+	<div class="local-storage-data col-md-6">
+		<div class="recent-searches-wrapper">
+			<div *ngIf="searches" class="recent-searches">
+				<h2 class="h2-searches">Recent Searches</h2>
+				<ul class="ol-searches">
+					<li class="li-searches" *ngFor="let lastSearch of lastSearches | reverse;
+				 	 let i= index " (click)="onSearch(lastSearch)" >
+						<span class="list-index">
+							{{i+1}}
+						</span>
+						<span class="list-data">
+							{{lastSearch['Maker Name'] | capitalize}}
+							{{lastSearch['Vehicle Registration Number'] | capitalize}}	
+						</span>					
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="recent-save-wrapper">
+			<div *ngIf="storeData" class="recent-save">
+				<h2 class="h2-save">Recent Saved</h2>
+				<ul class="ol-save">
+					<li class="li-save" *ngFor="let save of lastSave let i = index" (click)="onSearch(save)">
+					<span class="list-index">{{i+1}}</span> 
+					<span class="list-data"> {{save['Maker Name'] | capitalize}}   {{save['Vehicle Registration Number'] | capitalize}} </span>  <button class="delete-save" (click)="deleteSave(save); $event.stopPropagation()">x</button> </li>
+				</ul>
+			</div>
+
+			<div *ngIf="alertDelete" class="alert alert-info alert-dismissable fade in alertDelete">
+				<a (click)="alertDelete = false" href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Your record has been deleted successfully
+			</div>
+		</div>
+	</div>
+
+
+	<div class="clear"></div>
+
+</div>

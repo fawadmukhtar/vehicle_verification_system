@@ -1,0 +1,35 @@
+<ng-progress></ng-progress>
+
+<nav class="navbar navbar-inverse navbar-fixed-top menu-top">
+    <div class="container menu-top-margin">
+      <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" (click)="toggleState()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink="/punjab" routerLinkActive="active" > Home </a>
+        </div>
+        <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }"> 
+          <!-- <div class="container"> -->
+            <ul class="nav navbar-nav float-left">
+                <li><a routerLink="/punjab" routerLinkActive="active" > Punjab Vehicle </a></li>
+          <li><a routerLink="/islamabad" routerLinkActive="active" > Islamabad Vehicle </a></li>
+          <li><a routerLink="/kpk" routerLinkActive="active" > KPK Vehicle </a></li>
+          <li><a routerLink="/sindh" routerLinkActive="active" > Sindh Vehicle </a></li>
+        </ul>
+
+            <ul class="nav navbar-nav float-right">
+              <li *ngIf="!authService.loggedIn()" ><a routerLink="/register" routerLinkActive="active" >Register</a></li>
+                    <li *ngIf="!authService.loggedIn()" ><a routerLink="/login" routerLinkActive="active" > Login </a></li>
+              <li *ngIf="authService.loggedIn()" ><a routerLink="#" (click)="onLogout()" >Logout</a></li>
+            </ul>
+        <!-- </div> -->
+      </div>
+    </div>
+</nav>
+<div class="container margin-top">
+    <flash-messages></flash-messages>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,24 @@
+{
+  "name": "vehicleVerification",
+  "version": "1.0.0",
+  "description": "Vehicle Verification in MEAN",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app" 
+  },
+  "author": "fawad mukhtar",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "jsonwebtoken": "^8.0.1",
+    "mongoose": "^4.11.8",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
+    "request": "^2.81.0"
+  }
+}

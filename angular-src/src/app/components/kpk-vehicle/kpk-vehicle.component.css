@@ -1,0 +1,272 @@
+div.clear{
+	clear: both;
+}
+
+div.ent-info-div {
+    background-color: #eee;
+    padding: 36px;
+    margin-top: 30px;
+    margin-bottom: -29px;
+    box-shadow: 2px 2px 6px 1px #9a9797;
+}
+
+div.search-form {
+    background-color: #eee;
+    padding: 36px;
+    margin-top: 30px;
+    box-shadow: 2px 2px 6px 1px #9a9797;
+}
+
+button.search-btn {
+    margin-top: 8px;
+}
+
+
+/* search output record */
+
+div.new-table {
+    background-color: #fff;
+    padding: 36px;
+    margin-top: 30px;
+    box-shadow: 2px 2px 6px 1px #9a9797;
+}
+
+td.token-paid{
+    background-color: #62f442;
+}
+
+td.token-unpaid {
+    background-color: #cc0216;
+    color: #fff;
+}
+
+
+/* Recent Searches */
+
+div.recent-searches {
+    margin: 30px 0;
+    padding: 10px;
+    text-align: center;
+}
+
+ul.ol-searches {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+li.li-searches span.list-index {
+    background-color: #2196F3;
+    position: relative;
+    z-index: 2;
+    border-radius: 50%;
+    border: 6px solid #ffffff;
+    outline: none;
+    box-shadow: none;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+    color: #fff;
+
+}
+
+li.li-searches span.list-data {
+    background-color: #eee;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    left: -14px;
+    display: inline-block;
+    width: 250px;
+}
+
+div.recent-searches span {
+    color: #607D8B;
+    font-size: 16px;
+}
+
+div.recent-searches span.list-data:hover {
+    background-color: #607D8B;
+    cursor: pointer;
+    border-radius: 3px;
+    color: #eee;
+    transition: linear all 0.25s;
+    cursor: pointer;
+}
+
+h2.h2-searches {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    color: #2196f3;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+ol.ol-searches {
+    padding-left: 15px;
+}
+
+li.li-searches {
+    color: #071879;
+    cursor: pointer;
+}
+
+li.li-searches:hover {
+    color: #03A9F4;
+    transition: all linear 0.25s;
+}
+
+
+
+
+/* Saved Records */
+
+div.clear{
+    clear: both;
+}
+
+div.recent-save {
+    padding: 10px;
+    text-align: center;
+}
+
+h2.h2-save {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    color: #2196f3;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+ul.ol-save {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li.li-save {
+    color: #071879;
+    cursor: pointer;
+}
+
+li.li-save span.list-index {
+    background-color: #2196F3;
+    position: relative;
+    z-index: 2;
+    border-radius: 50%;
+    border: 6px solid #ffffff;
+    outline: none;
+    box-shadow: none;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+    color: #fff;
+
+}
+
+li.li-save span.list-data {
+    background-color: #eee;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    left: -14px;
+    display: inline-block;
+    width: 250px;
+    font-size: 16px;
+    color: #607D8B;
+}
+
+li.li-save span.list-data:hover {
+    color: #eee;
+    background-color: #607D8B;
+    transition: all linear 0.25s;
+    cursor: pointer;
+}
+
+
+
+button.delete-save {
+    position: relative;
+    left: -14px;
+    padding: 12px;
+    border: none;
+}
+
+button.delete-save:hover{
+    background-color: #607D8B;
+    color: #eee;
+    transition: linear all 0.25s;
+    cursor: pointer;
+}
+
+div.alertSave {
+    margin-top: 16px;
+}
+
+div.alertDelete {
+    margin-top: 15px;
+}
+
+/*for vehicle color*/
+
+span.color-span {
+    position: relative;
+    left: 0;
+    top: 3px;
+    display: inline-block;
+    width: 30px;
+    height: 16px;
+    border: 1px solid;
+}
+
+span.red{
+    background-color: red;  
+}
+span.white{
+    background-color: white;    
+}
+span.gold{
+    background-color: gold; 
+}
+span.black{
+    background-color: black;    
+}
+span.green{
+    background-color: green;    
+}
+span.purple{
+    background-color: purple;   
+}
+span.yellow{
+    background-color: yellow;   
+}
+span.maroon{
+    background-color: maroon;   
+}
+span.golden{
+    background-color: #FFD700;  
+}
+span.blue{
+    background-color: blue; 
+}
+span.brown{
+    background-color: brown;    
+}
+span.cream{
+    background-color: #fffdd0;  
+}
+span.gray{
+    background-color: gray; 
+}
+span.orange{
+    background-color: orange;   
+}span.pink{
+    background-color: pink; 
+}
